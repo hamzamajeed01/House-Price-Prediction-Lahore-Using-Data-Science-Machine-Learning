@@ -8,3 +8,4 @@ we are going to build a machine learning model which will predict price of a hou
 ->Encoding
 ->Noormalization
 ->PCS
+->Visualization and Descriptive analysis
