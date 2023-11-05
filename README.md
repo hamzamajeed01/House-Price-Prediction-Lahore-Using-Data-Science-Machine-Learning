@@ -8,5 +8,5 @@ we are going to build a machine learning model which will predict price of a hou
 ->Encoding
 ->Noormalization
 ->PCS
-->Visualization(Univariate ,Bivariate )
+->Visualization(through Univariate ,Bivariate analysis and heatmap and correlation matrix )
 ->Descriptive analysis
