@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Data Science Project</title>
+    <link
+    rel="shortcut icon"
+    href="{{ url_for('static',filename='favicon1.ico')}}"
+  />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="static/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom styles for this template -->
+    <link href="static/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="static/responsive.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <h2><strong>Group 5</strong></h2>
+            </a>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="slider_section">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4 offset-md-1">
+              <div class="detail-box">
+                <h1>
+                  <span> House Price</span> <br />
+                  Prediction - Lahore <br />
+                  Using Machine Learning
+                </h1>
+                <p>
+                  Using Data Science and Machine Learning, our model can predict
+                  house prices with precision, helping you make smart choices in
+                  real estate.
+                </p>
+                <div class="detail-box">
+                  <!-- Existing content -->
+                  <button
+  id="scrollToFormButton"
+  style="
+    background-color: #5e4caf;
+    color: white;
+    padding: 10px 15px; /* Smaller padding */
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded corners */
+    width: auto; /* Adjust width as needed */
+  "
+>
+  Predict Price
+
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end slider section -->
+    </div>
+
+    <!-- predict section -->
+    
+    <div class="form-container" id="formSection">
+      <form id="form" method="post" action="predict_price">
+        <input type="number" name="latitude" id="latitude" placeholder="Latitude" />
+        <input type="number" name="longitude" id="longitude" placeholder="Longitude" />
+        <input type="number" name="baths" id="baths" placeholder="Baths" />
+        <input type="number" name="bedrooms" id="bedrooms" placeholder="Bedrooms" />
+        <input type="number" name="total_area" id="total_area" placeholder="Total Area" />
+        <select name="property_type" id="property_type">
+          <option value="0">Type 0</option>
+          <option value="1">Type 1</option>
+          <option value="2">Type 2</option>
+          <option value="3">Type 3</option>
+          <option value="4">Type 4</option>
+          <option value="5">Type 5</option>
+        </select>
+        <button type="submit" id="predictButton">Predict Price</button>
+      </form>
+    </div>
+    <div id="predictionResult" class="result-container">{% if predicted_price %}
+      <p>Predicted Price: {{ predicted_price }}</p>
+      {% endif %}</div>
+  </div>
+  
+    <!-- end predict section -->
+    <!-- footer section -->
+    <section class="container-fluid footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="https://html.design/">Group 5</a>
+        </p>
+      </div>
+    </section>
+    <!-- end  footer section -->
+
+    <script type="text/javascript" src="static/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="static/bootstrap.js"></script>
+    <script type="text/javascript" src="static/custom.js"></script>
+    <script>document.getElementById("scrollToFormButton").addEventListener("click", function() {
+      document.getElementById("formSection").scrollIntoView({ behavior: 'smooth' });
+    });</script>
+    
+  </body>
+</html>
+
+
+
+
+
