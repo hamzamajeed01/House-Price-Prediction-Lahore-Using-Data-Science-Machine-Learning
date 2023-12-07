@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,jsonify
 import joblib
 import pandas as pd
 import numpy as np
@@ -37,36 +37,9 @@ def predict():
             new_input_data_normalized = loaded_scaler.transform(new_input_data)
             new_input_data_pca = np.dot(new_input_data_normalized, loaded_pca_components.T)
             predicted_price = lr.predict(new_input_data_pca)
-            return render_template('index.html', predicted_price=f'Predicted House Price: {predicted_price[0]:.2f}')
+            return jsonify({'predicted_price': float(predicted_price[0])})
         except Exception as e:
-            return render_template('index.html', predicted_price=f'Error: {e}')
-# new_data = {
-#     'area': 6000,
-#     'bedrooms': 4,
-#     'bathrooms': 1,
-#     'stories': 2,
-#     'mainroad': 1,
-#     'guestroom': 0,
-#     'basement': 1,
-#     'hotwaterheating': 0,
-#     'airconditioning': 0,
-#     'parking': 3,
-#     'prefarea': 0,
-#     'furnishingstatus_furnished': 0,
-#     'furnishingstatus_semi-furnished': 1,
-#     'furnishingstatus_unfurnished': 0
-# }
-
-# new_input_data = pd.DataFrame([new_data])
-# loaded_scaler = joblib.load('scaler.joblib')
-# loaded_pca_components = joblib.load('pca_components.joblib')
-# new_input_data_normalized = loaded_scaler.transform(new_input_data)
-# new_input_data_pca = np.dot(new_input_data_normalized, loaded_pca_components.T)
-# predicted_price = lr.predict(new_input_data_pca)
-# print(f'Predicted House Price: {predicted_price[0]:.2f}')
-
-
-           
+            return jsonify({'error': str(e)})        
 
 if __name__ == '__main__':
     app.run(debug=True)
